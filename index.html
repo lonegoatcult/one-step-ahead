@@ -36,17 +36,26 @@
             "Ok, now you're asking for trouble!",
             "You're on the edge now, aren't you?",
             "What are you doing? Stop it!",
-            "Maybe you've got what it takes to be a GOAT after all."
+            "Maybe you've got what it takes to be a GOAT after all.",
+            "Goodbye!"
         ];
 
         // Counter to keep track of which message to show
         let counter = 0;
 
         function changeText() {
-            // Change the text to the next message in the array
-            document.getElementById('pageText').innerText = messages[counter];
-            // Update counter and reset if it goes out of bounds
-            counter = (counter + 1) % messages.length;
+            // Check if we have reached the last message ("Goodbye!")
+            if (counter < messages.length - 1) {
+                // Change the text to the next message in the array
+                document.getElementById('pageText').innerText = messages[counter];
+                // Update counter to the next message
+                counter++;
+            } else {
+                // Show the "Goodbye!" message and stop the cycle
+                document.getElementById('pageText').innerText = messages[counter];
+                // Disable the button after "Goodbye!" is shown
+                document.querySelector("button").disabled = true;
+            }
         }
     </script>
 </body>
